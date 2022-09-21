@@ -4,7 +4,7 @@ node_js:
   - "10"
 
 env:
-  - DOCKER_REPO=convergencelabs/javascript-examples
+  - DOCKER_REPO=natnael26/udagram-api-feed
 
 services:
   - docker
@@ -12,11 +12,10 @@ services:
 script:
  - bundle install
  - npm run build
- - ./scripts/docker-prepare.sh
- - docker build -t $DOCKER_REPO docker-build
+ - docker build -t udagram-api-feed ./udagram-api-feed
 
 after_success:
  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+   docker login -u="natnael26" -p="MamiAbabi7180";
    docker push $DOCKER_REPO;
    fi
